@@ -27,19 +27,16 @@ if prompt := st.chat_input():
 
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-    #response = client.chat.completions.create(model="gpt-4o-mini", messages=st.session_state.messages)
-    #msg = response.choices[0].message.content
-    #response = client.models.generate_content(
-    #    model='gemini-2.0-flash-exp', contents=prompt
-    #)
-    #msg = response.text
-    #print(msg)    
-    text_output = ""
 
-    for chunk in client.models.generate_content_stream(model='gemini-2.0-flash-exp', contents=prompt):
-        print(chunk.text)
-        msg = chunk.text
-
-        st.session_state.messages.append({"role": "assistant", "content": msg})
-        st.chat_message("assistant").write(msg)
-
+    with st.chat_message("assistant"):
+        response_placeholder = st.empty()
+        full_response = ""
+        
+        for chunk in client.models.generate_content_stream(model='gemini-2.0-flash-exp', contents=prompt):
+            if chunk.text:
+                full_response += chunk.text
+                response_placeholder.markdown(full_response + "▌")
+        
+        response_placeholder.markdown(full_response)
+    
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
