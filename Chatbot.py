@@ -8,7 +8,7 @@ with st.sidebar:
     "Upload an image"
 
 st.title("💬 Chatbot")
-st.caption("🚀 A Streamlit chatbot powered by OpenAI")
+st.caption("🚀 A Streamlit chatbot Demo")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 

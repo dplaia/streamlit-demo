@@ -1,0 +1,23 @@
+[project]
+name = "streamlit-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "controlflow>=0.12.1",
+    "crawl4ai>=0.4.248",
+    "google-genai>=1.2.0",
+    "langchain>=0.3.19",
+    "langchain-community>=0.3.18",
+    "langchain-google-genai>=2.0.9",
+    "markdown2>=2.5.3",
+    "markitdown>=0.0.1a4",
+    "openai>=1.63.2",
+    "pydantic-ai>=0.0.24",
+    "pydantic-settings>=2.8.0",
+    "reportlab>=4.3.1",
+    "streamlit>=1.42.2",
+    "streamlit-feedback>=0.1.4",
+    "trubrics>=1.8.2",
+]
